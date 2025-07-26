@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Pomodoro Timer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+	</head>
+	<body class="bg-gradient-to-br from-red-100 to-red-300 min-h-screen flex items-center justify-center px-4">
+		<div class="bg-white shadow-xl rounded-3xl p-8 max-w-md w-full text-center">
+			<h1 class="text-3xl font-bold text-red-600 mb-4">Pomodoro Timer</h1>
+
+			<div class="flex justify-center space-x-4 mb-4">
+				<button onclick="setSession('work')" id="btn-work" class="session-btn bg-red-500 text-white px-4 py-2 rounded-full">Work</button>
+
+				<button onclick="setSession('short')" id="btn-short" class="session-btn bg-red-500 text-white px-4 py-2 rounded-full">Short Break</button>
+
+				<button onclick="setSession('long')" id="btn-long" class="session-btn bg-red-500 text-white px-4 py-2 rounded-full">Long Break</button>
+			</div>
+
+			<div class="text-6xl font-bold mb-4" id="timer">25:00</div>
+
+			<div class="grid grid-cols-3 gap-2 mb-4 text-sm text-left">
+				<label>
+					<span class="text-gray-700">Work (min)</span>
+					<input id="work-input" type="number" min="1" max="300" value="25" class="w-full px-2 py-1 border rounded" />
+				</label>
+				<label>
+					<span class="text-gray-700">Short (min)</span>
+					<input id="short-input" type="number" min="1" max="60" value="5" class="w-full px-2 py-1 border rounded" />
+				</label>
+				<label>
+					<span class="text-gray-700">Long (min)</span>
+					<input id="long-input" type="number" min="1" max="180" value="15" class="w-full px-2 py-1 border rounded" />
+				</label>
+			</div>
+
+			<div class="flex justify-center space-x-4 mb-4">
+				<button onclick="startTimer()" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600">Start</button>
+
+				<button onclick="pauseTimer()" class="bg-yellow-400 text-white px-6 py-2 rounded-full hover:bg-yellow-500">Pause</button>
+
+				<button onclick="resetTimer()" class="bg-gray-300 text-black px-6 py-2 rounded-full hover:bg-gray-400">Reset</button>
+			</div>
+
+			<div class="text-sm text-gray-700">Session: <span id="session-type">Work</span> | Completed: <span id="session-count">0</span></div>
+
+			<audio id="alarm-sound" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" preload="auto"></audio>
+		</div>
+
+		<script src="app.js"></script>
+	</body>
+</html>
